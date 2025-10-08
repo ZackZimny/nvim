@@ -205,20 +205,22 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
- -- Buffer navigation
- vim.keymap.set('n', 'L', '<Cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
- vim.keymap.set('n', 'H', '<Cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
+-- Buffer navigation
+vim.keymap.set('n', 'L', '<Cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', 'H', '<Cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
 
- -- Toggle lazygit
- vim.keymap.set('n', '<leader>g', function()
-   require('toggleterm.terminal').Terminal:new({
-     cmd = 'lazygit',
-     direction = 'float',
-     float_opts = { border = 'curved' },
-   }):toggle()
- end, { desc = 'Toggle lazygit' })
+-- Toggle lazygit
+vim.keymap.set('n', '<leader>g', function()
+  require('toggleterm.terminal').Terminal
+    :new({
+      cmd = 'lazygit',
+      direction = 'float',
+      float_opts = { border = 'curved' },
+    })
+    :toggle()
+end, { desc = 'Toggle lazygit' })
 
- -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
+-- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
@@ -568,11 +570,11 @@ require('lazy').setup({
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
-          map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
