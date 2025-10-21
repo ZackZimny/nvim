@@ -363,12 +363,13 @@ require('lazy').setup({
         },
       },
 
-      -- Document existing key chains
-      spec = {
-        { '<leader>s', group = '[S]earch' },
-        { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-      },
+       -- Document existing key chains
+       spec = {
+         { '<leader>s', group = '[S]earch' },
+         { '<leader>t', group = '[T]oggle' },
+         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+         { '<leader>c', group = 'code edit' },
+       },
     },
   },
 
@@ -552,9 +553,9 @@ require('lazy').setup({
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
-          -- Rename the variable under your cursor.
-          --  Most Language Servers support renaming across files, etc.
-          map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+           -- Rename the variable under your cursor.
+           --  Most Language Servers support renaming across files, etc.
+           map('<leader>cr', vim.lsp.buf.rename, 'rename')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
