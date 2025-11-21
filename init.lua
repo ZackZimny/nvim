@@ -363,13 +363,13 @@ require('lazy').setup({
         },
       },
 
-       -- Document existing key chains
-       spec = {
-         { '<leader>s', group = '[S]earch' },
-         { '<leader>t', group = '[T]oggle' },
-         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-         { '<leader>c', group = 'code edit' },
-       },
+      -- Document existing key chains
+      spec = {
+        { '<leader>s', group = '[S]earch' },
+        { '<leader>t', group = '[T]oggle' },
+        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>c', group = 'code edit' },
+      },
     },
   },
 
@@ -553,9 +553,9 @@ require('lazy').setup({
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
-           -- Rename the variable under your cursor.
-           --  Most Language Servers support renaming across files, etc.
-           map('<leader>cr', vim.lsp.buf.rename, 'rename')
+          -- Rename the variable under your cursor.
+          --  Most Language Servers support renaming across files, etc.
+          map('<leader>cr', vim.lsp.buf.rename, 'rename')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
@@ -900,12 +900,20 @@ require('lazy').setup({
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
+    setup = { transparent = true },
     config = function()
       ---@diagnostic disable-next-line: missing-fields
 
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+      require('tokyonight').setup {
+        transparent = true,
+        styles = {
+          sidebars = 'transparent',
+          floats = 'transparent',
+        },
+      }
       vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
